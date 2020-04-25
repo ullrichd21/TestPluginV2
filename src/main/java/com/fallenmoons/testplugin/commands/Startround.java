@@ -2,6 +2,7 @@ package com.fallenmoons.testplugin.commands;
 
 import com.fallenmoons.testplugin.TestPlugin;
 import com.fallenmoons.testplugin.core.Round;
+import com.fallenmoons.testplugin.core.TeamManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,6 +17,8 @@ public class Startround implements CommandExecutor {
 
         plugin.getLogger().info("A new round has been started!");
         plugin.getServer().broadcastMessage(ChatColor.AQUA + "A new round has been started!");
+
+        TeamManager teams = new TeamManager(new String[] {"Blue", "Red", "Green"});
 
         if (args.length > 0) {
             Round currentRound = new Round(Integer.valueOf(args[0]));
