@@ -6,6 +6,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 
+// Arbitrary Comment
 public class Cauldron {
     private Block block;
     private Material[] inv = new Material[3];
