@@ -18,3 +18,9 @@ commands:
   gui:
     description: GUI test.
     usage: /<command>
+  jointeam:
+    description: Join a team.
+    usage: /<command> [team]
+  viewteams:
+    description: View all players on teams.
+    usage: /<command>

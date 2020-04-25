@@ -1,6 +1,7 @@
 package com.fallenmoons.testplugin.core;
 
 import com.fallenmoons.testplugin.TestPlugin;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -32,6 +33,7 @@ public class Team {
 
     public void joinTeam(Player player) {
         players.add(player);
+        player.setDisplayName(player.getDisplayName());
     }
 
 }

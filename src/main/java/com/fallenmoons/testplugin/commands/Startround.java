@@ -11,6 +11,11 @@ import org.bukkit.plugin.Plugin;
 
 public class Startround implements CommandExecutor {
     Plugin plugin = TestPlugin.getPlugin(TestPlugin.class);
+    TeamManager teamManager;
+
+    public Startround(TeamManager manager) {
+        this.teamManager = manager;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -18,7 +23,7 @@ public class Startround implements CommandExecutor {
         plugin.getLogger().info("A new round has been started!");
         plugin.getServer().broadcastMessage(ChatColor.AQUA + "A new round has been started!");
 
-        TeamManager teams = new TeamManager(new String[] {"Blue", "Red", "Green"});
+
 
         if (args.length > 0) {
             Round currentRound = new Round(Integer.valueOf(args[0]));

@@ -1,10 +1,7 @@
 package com.fallenmoons.testplugin;
 
 import com.fallenmoons.testplugin.commands.*;
-import com.fallenmoons.testplugin.core.AntiLogStripper;
-import com.fallenmoons.testplugin.core.CauldronManager;
-import com.fallenmoons.testplugin.core.GuiClickEvent;
-import com.fallenmoons.testplugin.core.WoodCutter;
+import com.fallenmoons.testplugin.core.*;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -34,6 +31,8 @@ public final class TestPlugin extends JavaPlugin implements Listener {
     float amount = 0.4f;
     ArrayList<Block> sc = new ArrayList<Block>();
 
+    public TeamManager teamManager;
+
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
@@ -50,12 +49,20 @@ public final class TestPlugin extends JavaPlugin implements Listener {
         //Register WoodCutter Mechanics
         getServer().getPluginManager().registerEvents(new WoodCutter(), this);
 
+        //Create Team Manager
+        teamManager = new TeamManager(new String[] {"Blue", "Red", "Green"});
+
         //Register Commands
         getCommand("clear").setExecutor(new Clear());
         getCommand("setspawn").setExecutor(new Setspawn());
         getCommand("spawn").setExecutor(new Spawn());
-        getCommand("startround").setExecutor(new Startround());
+        getCommand("startround").setExecutor(new Startround(teamManager));
         getCommand("gui").setExecutor(new Gui());
+        getCommand("jointeam").setExecutor(new JoinTeam(teamManager));
+        getCommand("viewteams").setExecutor(new ViewTeams(teamManager));
+
+
+
 
         //Custom Recipes
         ItemStack item = new ItemStack(Material.DIAMOND_SWORD);

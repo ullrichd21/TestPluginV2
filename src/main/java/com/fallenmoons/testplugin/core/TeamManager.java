@@ -1,6 +1,7 @@
 package com.fallenmoons.testplugin.core;
 
 import com.fallenmoons.testplugin.TestPlugin;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -20,12 +21,21 @@ public class TeamManager {
     }
 
     public void joinTeam(Team teamToJoin, Player player) {
+        for(Team t : teams) {
+            for(Player p : t.getMembers()) {
+                if (player.equals(p)) {
+                    player.sendMessage("You can't join this team, you are already on a team!");
+                    return;
+                }
+            }
+        }
+
         teamToJoin.joinTeam(player);
     }
 
     public Team getTeamFromName(String name) {
         for(Team t : teams) {
-            if (t.getTeamName().equals(name)) {
+            if (t.getTeamName().toLowerCase().equals(name.toLowerCase())) {
                 return t;
             }
         }
@@ -37,4 +47,18 @@ public class TeamManager {
         
     }
 
+    public Team playerOnTeam(Player player) {
+        for(Team t : teams) {
+            for(Player p : t.getMembers()) {
+                if (p.getDisplayName().equals(player.getDisplayName())) {
+                    return t;
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Team> getTeams() {
+        return teams;
+    }
 }
