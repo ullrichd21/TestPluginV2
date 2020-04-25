@@ -1,0 +1,20 @@
+name: TestPlugin
+version: ${project.version}
+main: com.fallenmoons.testplugin.TestPlugin
+api-version: 1.13
+commands:
+  clear:
+    description: Clears the player's inventory.
+    usage: /<command>
+  setspawn:
+    description: Sets a new world spawn.
+    usage: /<command>
+  spawn:
+    description: Teleports the player to the world spawn.
+    usage: /<command>
+  startround:
+    description: Starts a new round.
+    usage: /<command>
+  gui:
+    description: GUI test.
+    usage: /<command>
