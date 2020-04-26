@@ -31,10 +31,14 @@ public final class TestPlugin extends JavaPlugin implements Listener {
     float amount = 0.4f;
     ArrayList<Block> sc = new ArrayList<Block>();
 
-    public TeamManager teamManager;
+    private TeamManager teamManager;
 
     @Override
     public void onEnable() {
+
+        //Create Team Manager
+        teamManager = new TeamManager(new String[] {"Blue", "Red", "Green"});
+
         getServer().getPluginManager().registerEvents(this, this);
 
         //Register Our Log Anti-Stripper. None of that R rated stripping here!
@@ -49,8 +53,8 @@ public final class TestPlugin extends JavaPlugin implements Listener {
         //Register WoodCutter Mechanics
         getServer().getPluginManager().registerEvents(new WoodCutter(), this);
 
-        //Create Team Manager
-        teamManager = new TeamManager(new String[] {"Blue", "Red", "Green"});
+        //Register Anti-Friendly Fire Mechanics
+        getServer().getPluginManager().registerEvents(new AntiFriendlyFire( teamManager), this);
 
         //Register Commands
         getCommand("clear").setExecutor(new Clear());
@@ -84,6 +88,10 @@ public final class TestPlugin extends JavaPlugin implements Listener {
 
         Bukkit.addRecipe(recipe);
 
+    }
+
+    public TeamManager getTeamManager() {
+        return teamManager;
     }
 
     @EventHandler

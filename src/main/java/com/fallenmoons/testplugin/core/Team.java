@@ -34,6 +34,7 @@ public class Team {
     public void joinTeam(Player player) {
         players.add(player);
         player.setDisplayName(player.getDisplayName());
+        player.setPlayerListName(ChatColor.valueOf(teamName.toUpperCase()) + player.getDisplayName());
     }
 
 }
