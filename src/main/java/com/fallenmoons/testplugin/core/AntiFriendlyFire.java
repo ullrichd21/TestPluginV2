@@ -27,6 +27,9 @@ public class AntiFriendlyFire implements Listener {
             Team attackerTeam = teamManager.playerOnTeam(attacker);
             Team damagedTeam = teamManager.playerOnTeam(damaged);
 
+//            attacker.sendMessage("You attacked " + damaged.getDisplayName());
+//            damaged.sendMessage("You've been attacked by " + attacker.getDisplayName());
+
             if (!attackerTeam.equals(null) && !damagedTeam.equals(null)) {
                 if(attackerTeam.equals(damagedTeam)) {
                     e.setCancelled(true);

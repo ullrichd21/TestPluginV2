@@ -24,3 +24,12 @@ commands:
   viewteams:
     description: View all players on teams.
     usage: /<command>
+  hat:
+    description: Gives you a neat hat!
+    usage: /<command>
+  trail:
+    description: Gives you a cool trail.
+    usage: /<command> [(to set trail) trail]
+  createflag:
+    description: Creates a team flag.
+    usage: /<command>

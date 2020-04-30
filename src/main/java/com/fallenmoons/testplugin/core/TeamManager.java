@@ -31,6 +31,7 @@ public class TeamManager {
         }
 
         teamToJoin.joinTeam(player);
+        player.sendMessage("You successfully joined the team!");
     }
 
     public Team getTeamFromName(String name) {

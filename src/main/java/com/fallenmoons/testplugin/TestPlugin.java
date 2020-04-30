@@ -32,12 +32,16 @@ public final class TestPlugin extends JavaPlugin implements Listener {
     ArrayList<Block> sc = new ArrayList<Block>();
 
     private TeamManager teamManager;
+    private ParticleManager partManager;
 
     @Override
     public void onEnable() {
 
         //Create Team Manager
         teamManager = new TeamManager(new String[] {"Blue", "Red", "Green"});
+
+        //Create particle manager
+        partManager = new ParticleManager();
 
         getServer().getPluginManager().registerEvents(this, this);
 
@@ -56,6 +60,12 @@ public final class TestPlugin extends JavaPlugin implements Listener {
         //Register Anti-Friendly Fire Mechanics
         getServer().getPluginManager().registerEvents(new AntiFriendlyFire( teamManager), this);
 
+        //Register ParticleHandler
+        getServer().getPluginManager().registerEvents(new ParticleHandler(partManager), this);
+
+        //Register FlagManager
+        getServer().getPluginManager().registerEvents(new FlagManager(teamManager), this);
+
         //Register Commands
         getCommand("clear").setExecutor(new Clear());
         getCommand("setspawn").setExecutor(new Setspawn());
@@ -64,6 +74,9 @@ public final class TestPlugin extends JavaPlugin implements Listener {
         getCommand("gui").setExecutor(new Gui());
         getCommand("jointeam").setExecutor(new JoinTeam(teamManager));
         getCommand("viewteams").setExecutor(new ViewTeams(teamManager));
+        getCommand("hat").setExecutor(new Hat());
+        getCommand("trail").setExecutor(new Trail(partManager));
+        getCommand("createflag").setExecutor(new CreateFlag());
 
 
 
