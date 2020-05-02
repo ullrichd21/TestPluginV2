@@ -1,6 +1,6 @@
-name: TestPlugin
+name: MC-CTF
 version: 1.0-SNAPSHOT
-main: com.fallenmoons.testplugin.TestPlugin
+main: com.fallenmoons.mcctf.Main
 api-version: 1.13
 commands:
   clear:
@@ -33,3 +33,24 @@ commands:
   createflag:
     description: Creates a team flag.
     usage: /<command>
+  heal:
+    description: Heals you!
+    usage: /<command>
+  feed:
+    description: Feeds you!
+    usage: /<command>
+  randompicker:
+    description: Picks a random player.
+    usage: /<command>
+  world:
+    description: Takes you to a whole new world!
+    usage: /<command> [worldname]
+  gotoinstance:
+    description: Takes you to an instance of the game world.
+    usage: /<command> [worldname]
+  createteamspawn:
+    description: Creates a new spawn for the given team at the player's location.
+    usage: /<command> [teamname]
+  givecustom:
+    description: Gives a custom item. Currently only "grappling_hook" is available.
+    usage: /<command> [player] [customitem]
