@@ -1,4 +1,4 @@
-package com.fallenmoons.mcctf.commands;
+package com.fallenmoons.mcctf.commands.teamcommands;
 
 import com.fallenmoons.mcctf.Main;
 import com.fallenmoons.mcctf.core.Team;
@@ -29,13 +29,7 @@ public class ViewTeams implements CommandExecutor {
 
             for(Team t : teams) {
                 for (Player p : t.getMembers()) {
-                    ChatColor color = ChatColor.BLUE;
-
-                    switch(t.getTeamName()) {
-                        case "Blue": {color = ChatColor.BLUE; break;}
-                        case "Red": {color = ChatColor.RED; break;}
-                        case "Green": {color = ChatColor.GREEN; break;}
-                    }
+                    ChatColor color = t.getTeamColor();
                     player.sendMessage(color + t.getTeamName() + ": " + p.getDisplayName());
                 }
 
@@ -46,14 +40,7 @@ public class ViewTeams implements CommandExecutor {
 
             for(Team t : teams) {
                 for (Player p : t.getMembers()) {
-                    ChatColor color = ChatColor.BLUE;
-
-                    switch(t.getTeamName()) {
-                        case "Blue": {color = ChatColor.BLUE; break;}
-                        case "Red": {color = ChatColor.RED; break;}
-                        case "Green": {color = ChatColor.GREEN; break;}
-                    }
-                    plugin.getLogger().info(color + t.getTeamName() + ": " + p.getDisplayName());
+                    plugin.getLogger().info(t.getTeamName() + ": " + p.getDisplayName());
                 }
 
             }

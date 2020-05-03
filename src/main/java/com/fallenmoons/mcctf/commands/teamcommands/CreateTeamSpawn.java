@@ -1,4 +1,4 @@
-package com.fallenmoons.mcctf.commands;
+package com.fallenmoons.mcctf.commands.teamcommands;
 
 import com.fallenmoons.mcctf.Main;
 import org.bukkit.ChatColor;

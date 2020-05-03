@@ -1,6 +1,10 @@
 package com.fallenmoons.mcctf.core;
 
 import com.fallenmoons.mcctf.Main;
+import com.fallenmoons.mcctf.core.events.GuiUseEvent;
+import com.fallenmoons.mcctf.gui.GuiClickEvent;
+import com.fallenmoons.mcctf.gui.TeamColorEnterGui;
+import com.fallenmoons.mcctf.gui.TeamNameEnterGui;
 import com.fallenmoons.mcctf.items.GrapplingHook;
 import com.fallenmoons.mcctf.mechanics.AntiFriendlyFire;
 import com.fallenmoons.mcctf.mechanics.AntiLogStripper;
@@ -26,6 +30,12 @@ public class ListenerManager {
         //Register GUI
         main.getServer().getPluginManager().registerEvents(new GuiClickEvent(), main);
 
+        //Register TeamCreateGUI listener
+        main.getServer().getPluginManager().registerEvents(new TeamNameEnterGui(main), main);
+
+        //Register TeamColorPickerGUI listener
+        main.getServer().getPluginManager().registerEvents(new TeamColorEnterGui(main), main);
+
         //Register WoodCutter Mechanics
         main.getServer().getPluginManager().registerEvents(new WoodCutter(), main);
 
@@ -49,5 +59,7 @@ public class ListenerManager {
 
         //Register Respawn Manager
         main.getServer().getPluginManager().registerEvents(new RespawnManager(main), main);
+
+
     }
 }

@@ -53,8 +53,6 @@ public class FlagManager implements Listener {
             } else if (teamManager.getTeamFromPlayer(player) != null && teamManager.getTeamFromPlayer(player).getTeamName().equalsIgnoreCase("red")){
                 e.getClickedBlock().setType(Material.AIR);
                 player.sendMessage("Flag Returned");
-
-
             }
         } else if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && e.getClickedBlock().getType() == Material.DISPENSER) {
             e.setCancelled(true);
@@ -69,7 +67,5 @@ public class FlagManager implements Listener {
                 e.getClickedBlock().getRelative(BlockFace.UP).setType(Material.RED_BANNER);
             }
         }
-
     }
-
 }

@@ -45,6 +45,9 @@ commands:
   world:
     description: Takes you to a whole new world!
     usage: /<command> [worldname]
+  saveworld:
+    description: Saves the world.
+    usage: /<command>
   gotoinstance:
     description: Takes you to an instance of the game world.
     usage: /<command> [worldname]
@@ -54,3 +57,6 @@ commands:
   givecustom:
     description: Gives a custom item. Currently only "grappling_hook" is available.
     usage: /<command> [player] [customitem]
+  createteam:
+    description: Creates a new team!
+    usage: /<command> [teamname] [teamcolor]
