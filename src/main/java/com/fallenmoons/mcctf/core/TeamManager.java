@@ -33,8 +33,10 @@ public class TeamManager {
     }
 
     public void createTeam(String teamName, ChatColor teamColor) {
-        Team team = new Team(teamName, teamColor);
-        teams.add(team);
+        if (teams.size() < 3) {
+            Team team = new Team(teamName, teamColor, getNextTeamID());
+            teams.add(team);
+        }
     }
 
     public Team getTeamFromName(String name) {
@@ -101,6 +103,21 @@ public class TeamManager {
         }
 
         return false;
+    }
+
+    public int getNextTeamID() {
+        int nextID = -1;
+        for(Team t : teams) {
+            if (t.getTeamID() > nextID) {
+                nextID = t.getTeamID() + 1;
+            }
+        }
+
+        if (nextID > 3) {
+            return -1;
+        } else {
+            return nextID;
+        }
     }
 
 }

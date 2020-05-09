@@ -11,6 +11,7 @@ public class Team {
 
     private Plugin plugin = Main.getPlugin(Main.class);
 
+    private int teamID;
     private String teamName;
     private ArrayList<Player> players;
     private ChatColor teamColor;
@@ -24,8 +25,9 @@ public class Team {
     private int gold;
     private int diamonds;
 
-    public Team(String teamName, ChatColor teamColor) {
+    public Team(String teamName, ChatColor teamColor, int teamID) {
         this.teamName = teamName;
+        this.teamID = teamID;
         players = new ArrayList<Player>();
         this.teamColor = teamColor;
         this.points = 0;
@@ -121,6 +123,14 @@ public class Team {
 
     public void setDiamonds(int diamonds) {
         this.diamonds = diamonds;
+    }
+
+    public void setTeamID(int teamID) {
+        this.teamID = teamID;
+    }
+
+    public int getTeamID() {
+        return this.teamID;
     }
 
     public void joinTeam(Player player) {

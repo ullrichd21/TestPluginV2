@@ -20,8 +20,8 @@ public class RespawnManager implements Listener {
 
         if (main.getTeamManager().playerOnTeam(player)) {
             Team t = main.getTeamManager().getTeamFromPlayer(player);
-            String teamName = t.getTeamName().toLowerCase();
-            e.setRespawnLocation(main.getTeamSpawnData().getSpawnLocation(player.getWorld(), teamName, player));
+            int teamID = t.getTeamID();
+            e.setRespawnLocation(main.getTeamSpawnData().getSpawnLocation(player.getWorld(), teamID, player));
         } else {
             e.setRespawnLocation(player.getWorld().getSpawnLocation());
         }

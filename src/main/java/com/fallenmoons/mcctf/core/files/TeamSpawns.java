@@ -19,15 +19,15 @@ public class TeamSpawns extends AbstractFile {
         save();
     }
 
-    public void saveLocation(World world, String teamName, Vector value, Vector direction) {
-        String path = world.getName().toLowerCase() + "." + teamName.toLowerCase();
+    public void saveLocation(World world, int teamID, Vector value, Vector direction) {
+        String path = world.getName().toLowerCase() + "." + teamID;
         config.set(path + ".location", value);
         config.set(path + ".direction", direction);
         save();
     }
 
-    public Location getSpawnLocation(World world, String teamName, Player player) {
-        String path = world.getName().toString().toLowerCase() + "." + teamName.toLowerCase();
+    public Location getSpawnLocation(World world, int teamID, Player player) {
+        String path = world.getName().toString().toLowerCase() + "." + teamID;
         Location loc = config.getVector(path + ".location").toLocation(player.getWorld());
         loc.setDirection(config.getVector(path +".direction"));
         return loc;

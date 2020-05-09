@@ -1,6 +1,7 @@
 package com.fallenmoons.mcctf.gui;
 
 import com.fallenmoons.mcctf.Main;
+import com.fallenmoons.mcctf.core.Team;
 import com.fallenmoons.mcctf.core.events.GuiUseEvent;
 import com.fallenmoons.mcctf.core.events.TeamNameEnter;
 import org.bukkit.Bukkit;
@@ -34,20 +35,21 @@ public class TeamColorEnterGui implements Listener {
 
         teamName = e.getName();
 
-        ItemStack[] colors = new ItemStack[9];
+        ItemStack[] colors = new ItemStack[4];
 
-        colors[0] = getColorItem(Material.LIGHT_BLUE_CONCRETE, ChatColor.BLUE, "Light Blue", "BLUE");
-        colors[1] = getColorItem(Material.BLUE_CONCRETE, ChatColor.DARK_BLUE, "Dark Blue", "DARK_BLUE");
-        colors[2] = getColorItem(Material.GREEN_CONCRETE, ChatColor.DARK_GREEN, "Green", "DARK_GREEN");
-        colors[3] = getColorItem(Material.LIME_CONCRETE, ChatColor.GREEN, "Lime", "GREEN");
-        colors[4] = getColorItem(Material.RED_CONCRETE, ChatColor.DARK_RED, "Red", "DARK_RED");
-        colors[5] = getColorItem(Material.PURPLE_CONCRETE, ChatColor.DARK_PURPLE, "Purple", "DARK_PURPLE");
-        colors[6] = getColorItem(Material.YELLOW_CONCRETE, ChatColor.YELLOW, "Yellow", "YELLOW");
-        colors[7] = getColorItem(Material.WHITE_CONCRETE, ChatColor.WHITE, "White", "WHITE");
-        colors[8] = getColorItem(Material.BLACK_CONCRETE, ChatColor.BLACK, "Black", "BLACK");
+        colors[0] = getColorItem(Material.BLUE_CONCRETE, ChatColor.DARK_BLUE, "Blue", "DARK_BLUE");
+        colors[1] = getColorItem(Material.GREEN_CONCRETE, ChatColor.DARK_GREEN, "Green", "GREEN");
+        colors[2] = getColorItem(Material.RED_CONCRETE, ChatColor.DARK_RED, "Red", "DARK_RED");
+        colors[3] = getColorItem(Material.YELLOW_CONCRETE, ChatColor.YELLOW, "Yellow", "YELLOW");
 
         for(int i = 0; i < colors.length; i++) {
             gui.setItem(i, colors[i]);
+
+            for (Team t : main.getTeamManager().getTeams()) {
+                if (t.getTeamColor().equals(ChatColor.valueOf(colors[i].getItemMeta().getLore().toString()))) {
+                    gui.setItem(i, null);
+                }
+            }
         }
 
         player.openInventory(gui);
