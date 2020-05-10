@@ -25,7 +25,7 @@ public class CreateTeamSpawn implements CommandExecutor {
 
             if (args.length == 1) {
                 Location loc = player.getLocation().getBlock().getLocation().add(0.5,0,0.5);
-                main.getTeamSpawnData().saveLocation(player.getWorld(), args[0], loc.toVector(), player.getLocation().getDirection());
+                main.getTeamSpawnData().saveLocation(player.getWorld(), Integer.valueOf(args[0]), loc.toVector(), player.getLocation().getDirection());
                 player.sendMessage(ChatColor.GREEN + "Saved Location ("
                         + loc.getX() + ", "
                         + loc.getY() + ", "

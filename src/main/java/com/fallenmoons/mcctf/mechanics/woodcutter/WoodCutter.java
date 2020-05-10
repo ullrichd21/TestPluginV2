@@ -31,10 +31,9 @@ public class WoodCutter implements Listener {
 
         if (e.hasBlock()) {
             if (cBlock.getType() == Material.STONECUTTER && e.getAction() == Action.LEFT_CLICK_BLOCK) {
-
                 PlayerInventory inv = player.getInventory();
 
-                if (e.getItem().getType().toString().toLowerCase().contains("log") && !e.getItem().toString().toLowerCase().contains("stripped")) {
+                if (inv.getItemInMainHand().getType() != null && e.getItem().getType().toString().toLowerCase().contains("log") && !e.getItem().toString().toLowerCase().contains("stripped")) {
                     if (player.getGameMode().equals(GameMode.CREATIVE)) {
                         e.setCancelled(true);
                     }
@@ -81,11 +80,11 @@ public class WoodCutter implements Listener {
 
                     //Sound
                     player.getWorld().playSound(e.getClickedBlock().getLocation(), Sound.UI_STONECUTTER_TAKE_RESULT, 1, 0.8f);
-                } else if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                    e.setCancelled(true);
                 } else {
-                    plugin.getLogger().info("Not sure how " + player.getName() + " did it but they broke something...");
+                    //plugin.getLogger().info("Not sure how " + player.getName() + " did it but they broke something...");
                 }
+            } else if (e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getClickedBlock().getType() == Material.STONECUTTER) {
+                e.setCancelled(true);
             }
         }
     }

@@ -6,10 +6,10 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-public class TeamSpawns extends AbstractFile {
+public class TeamData extends AbstractFile {
 
-    public TeamSpawns(Main main) {
-        super(main, "teamspawns.yml");
+    public TeamData(Main main) {
+        super(main, "teamdata.yml");
     }
 
     public void saveLocation(World world, String teamName, Vector value) {
@@ -27,7 +27,7 @@ public class TeamSpawns extends AbstractFile {
     }
 
     public Location getSpawnLocation(World world, int teamID, Player player) {
-        String path = world.getName().toString().toLowerCase() + "." + teamID;
+        String path = world.getName().toLowerCase() + "." + teamID;
         Location loc = config.getVector(path + ".location").toLocation(player.getWorld());
         loc.setDirection(config.getVector(path +".direction"));
         return loc;

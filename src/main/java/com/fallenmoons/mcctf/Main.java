@@ -1,7 +1,7 @@
 package com.fallenmoons.mcctf;
 
 import com.fallenmoons.mcctf.core.*;
-import com.fallenmoons.mcctf.core.files.TeamSpawns;
+import com.fallenmoons.mcctf.core.files.TeamData;
 import com.fallenmoons.mcctf.trails.ParticleManager;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,7 +11,7 @@ public final class Main extends JavaPlugin implements Listener {
 
     private TeamManager teamManager;
     private ParticleManager partManager;
-    private TeamSpawns teamSpawnData;
+    private TeamData teamSpawnData;
 
     @Override
     public void onEnable() {
@@ -22,7 +22,7 @@ public final class Main extends JavaPlugin implements Listener {
 
 
         //Create Team
-        teamSpawnData = new TeamSpawns(this);
+        teamSpawnData = new TeamData(this);
 
         //Create Team Manager
         teamManager = new TeamManager(this);
@@ -50,7 +50,7 @@ public final class Main extends JavaPlugin implements Listener {
         return partManager;
     }
 
-    public TeamSpawns getTeamSpawnData() {
+    public TeamData getTeamSpawnData() {
         return teamSpawnData;
     }
 }

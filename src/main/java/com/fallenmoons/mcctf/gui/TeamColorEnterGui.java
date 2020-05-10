@@ -46,7 +46,8 @@ public class TeamColorEnterGui implements Listener {
             gui.setItem(i, colors[i]);
 
             for (Team t : main.getTeamManager().getTeams()) {
-                if (t.getTeamColor().equals(ChatColor.valueOf(colors[i].getItemMeta().getLore().toString()))) {
+                //player.sendMessage(t.getTeamColor() + " == " + colors[i].getItemMeta().getLore().toString());
+                if (t.getTeamColor() == ChatColor.valueOf(colors[i].getItemMeta().getLore().toString().replace("[", "").replace("]", ""))) {
                     gui.setItem(i, null);
                 }
             }
@@ -68,7 +69,7 @@ public class TeamColorEnterGui implements Listener {
                 if (!main.getTeamManager().colorInUse(selectedColor)) {
                     main.getTeamManager().createTeam(teamName, selectedColor);
                     e.getClickEvent().setCancelled(true);
-                    player.sendMessage(ChatColor.GREEN + "Team Successfully Created! Use \"/jointeam"
+                    player.sendMessage(ChatColor.GREEN + "Team Successfully Created! Use \"/jointeam "
                             + teamName + "\" to join it!");
                     player.closeInventory();
                 } else {
